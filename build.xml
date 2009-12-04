@@ -11,7 +11,7 @@
 		<echo>Custom preparations for ano-tags</echo>
 		<copy toDir="${classes.dir}/META-INF" overwrite="true">
 		     <fileset dir="etc/tld">
-		         <include name="moskito.tld"/>
+		         <include name="ano-tags.tld"/>
 		     </fileset>
 		</copy>
 	</target>
