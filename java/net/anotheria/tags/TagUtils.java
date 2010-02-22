@@ -51,7 +51,36 @@ public class TagUtils {
 	public static int getScope(String scopeName) throws JspException {
 		return Scope.valueOf(scopeName).getPageContextScope();
     }
-	
+
+	public static Object lookup(PageContext pageContext, String scopeName, String beanName, String propertyName, String subPropertyName) throws JspException {
+
+		Object bean = lookup(pageContext, scopeName, beanName);
+		if (bean == null) {
+			return null;
+		}
+
+		if (propertyName == null) {
+			return bean;
+		}
+
+		try {
+			Object property = PropertyUtils.getProperty(bean, propertyName);
+
+			if(subPropertyName == null) {
+				return property;
+			}
+
+			try {
+				return PropertyUtils.getProperty(property, subPropertyName);
+			} catch (Exception e) {
+				log.error(e,e);
+				throw new JspException("Could not read " + beanName + "." + propertyName + "." + subPropertyName, e);
+			}
+		} catch (Exception e) {
+			log.error(e,e);
+			throw new JspException("Could not read " + beanName + "." + propertyName, e);
+		}
+	}
 	
 	public static Object lookup(PageContext pageContext, String scopeName, String beanName, String propertyName) throws JspException {
 		
