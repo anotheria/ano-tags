@@ -11,5 +11,6 @@
         <dependency org="javax" name="jsp-api" rev="stable" transitive="false"/>
         <dependency org="org.apache" name="log4j" rev="stable" transitive="false"/>
 		<dependency org="org.apache.commons" name="commons-beanutils" rev="stable" transitive="false"/>
+		<dependency org="anotheria.net" name="ano-util" rev="latest" transitive="true" changing="true"/>
     </dependencies>
 </ivy-module>
