@@ -116,6 +116,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 		<attribute>
+			<name>property</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
 			<name>scope</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
@@ -127,6 +132,11 @@
 		<bodycontent>JSP</bodycontent>
 		<attribute>
 			<name>name</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>property</name>
 			<required>false</required>
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
