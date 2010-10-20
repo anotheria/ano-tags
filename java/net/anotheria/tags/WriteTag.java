@@ -2,6 +2,10 @@ package net.anotheria.tags;
 
 import javax.servlet.jsp.JspException;
 
+import net.anotheria.util.StringUtils;
+
+
+
 public class WriteTag extends BaseTagSupport{
 	
 	private static final long serialVersionUID = 1L;
@@ -10,6 +14,7 @@ public class WriteTag extends BaseTagSupport{
 	private String property;
 	private boolean ignore;
     private boolean filter;
+    private boolean escape;
 
     public boolean getFilter() {
         return filter;
@@ -17,6 +22,12 @@ public class WriteTag extends BaseTagSupport{
     public void setFilter(boolean filter) {
         this.filter = filter;
     }
+    public boolean isEscape() {
+		return escape;
+	}
+	public void setEscape(boolean escape) {
+		this.escape = escape;
+	}
 	public boolean isIgnore() {
 		return ignore;
 	}
@@ -41,8 +52,13 @@ public class WriteTag extends BaseTagSupport{
 		Object toWrite = lookup();
 		String message = toWrite==null ? 
 				(ignore? "": "null") : ""+toWrite;
-		write(filter ? TagUtils.filter(message) : message);
+		if(filter)
+			message = TagUtils.filter(message);
+		if(escape)
+			message = StringUtils.escape(message, '\'','"');
+		write(message);
 		return SKIP_BODY;
 	}
+	
 
 }
