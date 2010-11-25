@@ -1,5 +1,8 @@
 package net.anotheria.tags;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.jsp.JspException;
 
 import net.anotheria.util.StringUtils;
@@ -15,6 +18,7 @@ public class WriteTag extends BaseTagSupport{
 	private boolean ignore;
     private boolean filter;
     private boolean escape;
+    private String dateFormat;
 
     public boolean getFilter() {
         return filter;
@@ -27,6 +31,12 @@ public class WriteTag extends BaseTagSupport{
 	}
 	public void setEscape(boolean escape) {
 		this.escape = escape;
+	}
+	public String getDateFormat() {
+		return dateFormat;
+	}
+	public void setDateFormat(String dateFormat) {
+		this.dateFormat = dateFormat;
 	}
 	public boolean isIgnore() {
 		return ignore;
@@ -56,6 +66,16 @@ public class WriteTag extends BaseTagSupport{
 			message = TagUtils.filter(message);
 		if(escape)
 			message = StringUtils.escape(message, '\'','"');
+		if (dateFormat != null) {
+			try {
+				long time = Long.parseLong(message);
+				SimpleDateFormat sdf = new SimpleDateFormat(dateFormat);
+				message = sdf.format(new Date(time));
+				// write as formatted date
+			} catch (Throwable e) {
+				// write as is
+			}
+		}
 		write(message);
 		return SKIP_BODY;
 	}
