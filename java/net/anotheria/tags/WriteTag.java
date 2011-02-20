@@ -18,6 +18,11 @@ public class WriteTag extends BaseTagSupport{
 	private boolean ignore;
     private boolean filter;
     private boolean escape;
+    
+    /**
+     *{@link Deprecated} WriteTag must be simple. Formating is not the part of it. Most formatting must be done while preparing bean or by other tags.
+     */
+    @Deprecated 
     private String dateFormat;
 
     public boolean getFilter() {
@@ -32,9 +37,13 @@ public class WriteTag extends BaseTagSupport{
 	public void setEscape(boolean escape) {
 		this.escape = escape;
 	}
+	
+	@Deprecated 
 	public String getDateFormat() {
 		return dateFormat;
 	}
+	
+	@Deprecated 
 	public void setDateFormat(String dateFormat) {
 		this.dateFormat = dateFormat;
 	}
@@ -58,10 +67,11 @@ public class WriteTag extends BaseTagSupport{
 	}
 	
 	@Override public int doEndTag() throws JspException {
-		
+		//lookup() works with ignoring null bean and null property
 		Object toWrite = lookup();
-		String message = toWrite==null ? 
-				(ignore? "": "null") : ""+toWrite;
+		if(toWrite == null)
+			return SKIP_BODY; //Nothing to write
+		String message = ""+toWrite;
 		if(filter)
 			message = TagUtils.filter(message);
 		if(escape)
