@@ -9,7 +9,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>net.anotheria</groupId>
   <artifactId>ano-tags</artifactId>
-  <version>1.0.2-SNAPSHOT</version>
+  <version>1.0.2</version>
   <name>anotheria.net taglibs</name>
 
   <build>
@@ -44,8 +44,8 @@
   </dependencies>
 
 	<scm>
-		<url>svn:svn://svn.anotheria.net/opensource/ano-tags/trunk</url>
-		<connection>scm:svn:svn://svn.anotheria.net/opensource/ano-tags/trunk</connection>
-		<developerConnection>scm:svn:svn://svn.anotheria.net/opensource/ano-tags/trunk</developerConnection>
+		<url>svn:svn://svn.anotheria.net/opensource/ano-tags/tags/ano-tags-1.0.2</url>
+		<connection>scm:svn:svn://svn.anotheria.net/opensource/ano-tags/tags/ano-tags-1.0.2</connection>
+		<developerConnection>scm:svn:svn://svn.anotheria.net/opensource/ano-tags/tags/ano-tags-1.0.2</developerConnection>
 	</scm>
 </project>
