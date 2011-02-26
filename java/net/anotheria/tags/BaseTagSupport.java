@@ -3,6 +3,8 @@ package net.anotheria.tags;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
+import net.anotheria.util.StringUtils;
+
 
 /**
  * Base class for tags without body.
@@ -75,6 +77,18 @@ public class BaseTagSupport extends TagSupport{
 
 	public void setProperty(String property) {
 		this.property = property;
+	}
+	
+	public String toString(){
+		String ret = "name: " + name;;
+
+		if(!StringUtils.isEmpty(property))
+			ret += ", property: " + property;
+		
+		if(!StringUtils.isEmpty(scope))
+			ret += ", scope: " + scope;
+		
+		return ret;
 	}
 	
 	public void release() {

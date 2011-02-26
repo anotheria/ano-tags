@@ -11,19 +11,7 @@ public class PresentTag extends ConditionalTagBase {
 	}
 
 	protected boolean condition(boolean desired) throws JspException {
-		boolean present = false;
-
-		if (getName() != null) {
-			try {
-				Object value = lookup();
-				present = (value != null);
-			} catch (JspException e) {
-			}
-		} else {
-			throw new JspException("Attribute 'name' was not specified");
-		}
-
-		return (present == desired);
+		return (lookup() != null) == desired;
 
 	}
 }

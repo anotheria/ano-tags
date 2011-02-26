@@ -7,10 +7,11 @@ public class DefineTag extends BaseBodyTagSupport {
 
 	private static final long serialVersionUID = 1L;
 
-	protected String body = null;
+	private String body = null;
+	private String value = null;
 
-    protected String type = null;
-    protected String toScope = null;
+	private String type = null;
+	private String toScope = null;
 
 
     public String getType() {
@@ -24,6 +25,12 @@ public class DefineTag extends BaseBodyTagSupport {
     }
     public void setToScope(String toScope) {
     	this.toScope = toScope;
+    }
+    public String getValue() {
+    	return value;
+    }
+    public void setValue(String value) {
+    	this.value = value;
     }
 
     @SuppressWarnings("deprecation")
@@ -48,20 +55,20 @@ public class DefineTag extends BaseBodyTagSupport {
 
     public int doEndTag() throws JspException {
         int n = 0;
-        if (this.body != null) n++;
-        if (this.getName() != null) n++;
-        if (n != 1) {
-            throw new JspException("Define tag should contain exactly one of name attribute or body content");
-        }
+        if (value != null) n++;
+        if (body != null) n++;
+        if (getName() != null) n++;
+        if (n != 1)
+            throw new JspException("Define tag should contain exactly one of value, name or body");
 
-        Object value = null;
-        if (getName() != null) {
-            value = lookup();
-        }
+        Object defObject = value;
         if (body != null) {
-            value = body;
+        	defObject = body;
         }
-        if (value == null) {
+        if (getName() != null) {
+            defObject = lookup();
+        }
+        if (defObject == null) {
             throw new JspException("Define tag cannot set a null value");
         }
         //expose bean
@@ -72,7 +79,7 @@ public class DefineTag extends BaseBodyTagSupport {
         	} catch (JspException e) {}
         }
             
-        pageContext.setAttribute(getId(), value, inScope);
+        pageContext.setAttribute(getId(), defObject, inScope);
 
         return (EVAL_PAGE);
     }
