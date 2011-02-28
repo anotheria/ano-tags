@@ -132,7 +132,7 @@
 		</attribute>
 	</tag>
 	<tag>
-		<name>greatThan</name>
+		<name>greaterThan</name>
 		<tagclass>net.anotheria.tags.GreatThanTag</tagclass>
 		<bodycontent>JSP</bodycontent>
 		<attribute>
