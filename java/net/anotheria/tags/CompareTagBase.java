@@ -6,7 +6,7 @@ import javax.servlet.jsp.JspException;
 
 import org.apache.commons.beanutils.PropertyUtils;
 
-public abstract class CompareTagBase extends BaseTagSupport {
+public abstract class CompareTagBase extends ConditionalTagBase {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -24,20 +24,10 @@ public abstract class CompareTagBase extends BaseTagSupport {
 		this.value = value;
 	}
 
-	public int doStartTag() throws JspException {
-		return condition() ? EVAL_BODY_INCLUDE : SKIP_BODY;
-	}
-
-	public int doEndTag() throws JspException {
-		return EVAL_PAGE;
-	}
-
 	public void release() {
 		super.release();
 		value = null;
 	}
-
-	protected abstract boolean condition() throws JspException;
 
 	protected boolean condition(int desired1, int desired2) throws JspException {
 

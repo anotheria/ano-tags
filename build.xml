@@ -15,9 +15,7 @@
 		     </fileset>
 		</copy>
 	</target>
-	<target name="test">
-		<echo>Tests are currently not available for ano-tags project</echo>
-	</target>
+	
 	<!-- 
 		checkout svn://svn.anotheria.net/opensource/build/trunk as ../build 
 		in order for this build script to work.

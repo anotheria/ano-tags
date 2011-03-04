@@ -342,4 +342,14 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+	<tag>
+		<name>choose</name>
+		<tagclass>net.anotheria.tags.ChooseTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+	</tag>
+	<tag>
+		<name>otherwise</name>
+		<tagclass>net.anotheria.tags.OtherwiseTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+	</tag>	
 </taglib>
