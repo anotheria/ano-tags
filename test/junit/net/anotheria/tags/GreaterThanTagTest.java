@@ -15,4 +15,14 @@ public class GreaterThanTagTest extends TagTestBase {
 	public void testNamePropertyValue() throws Exception {
 		assertEquals(1, countOKinContent(testJSP("/greaterThan/greaterThanTagTest02.jsp")));
 	}
+	
+	@Test 
+	public void testNameName2() throws Exception {
+		assertEquals(1, countOKinContent(testJSP("/greaterThan/greaterThanTagTest03.jsp")));
+	}
+	
+	@Test 
+	public void testNamePropertyName2Property2() throws Exception {
+		assertEquals(1, countOKinContent(testJSP("/greaterThan/greaterThanTagTest04.jsp")));
+	}
 }

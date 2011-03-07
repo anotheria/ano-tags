@@ -18,6 +18,7 @@ public abstract class ConditionalTagBase extends BaseTagSupport {
     }
 
     public int doEndTag() throws JspException {
+    	release();
         return EVAL_PAGE;
     }
 

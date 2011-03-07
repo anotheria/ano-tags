@@ -8,11 +8,28 @@ import java.util.Map;
 
 public class TestBean {
 
+
+	public String get122StringValue() {
+		return "122";
+	}
 	
 	public String get123StringValue() {
 		return "123";
 	}
 	
+	public String get124StringValue() {
+		return "124";
+	}
+	
+	public String getAnother123StringValue() {
+		return "123";
+	}
+	
+	public String get456StringValue() {
+		return "456";
+	}
+	
+
 	public String getEmptyStringValue() {
 		return "";
 	}

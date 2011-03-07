@@ -15,7 +15,16 @@ public abstract class CompareTagBase extends ConditionalTagBase {
 	protected static final int STRING_COMPARE = 2;
 
 	private String value = null;
+	
+	private String name2 =null;
+	
+	private String property2 = null;
 
+
+	/**
+	 * This is the value which should be compared to the value provided by the bean specified using
+	 * name and property attribute.
+	 */
 	public String getValue() {
 		return value;
 	}
@@ -24,13 +33,46 @@ public abstract class CompareTagBase extends ConditionalTagBase {
 		this.value = value;
 	}
 
+	/**
+	 * If value is not set you can use name2 and property2 to specify a second bean which provides the value
+	 */
+	public String getName2() {
+		return name2;
+	}
+
+	public void setName2(String name2) {
+		this.name2 = name2;
+	}
+
+	/**
+	 * If value is not set you can use name2 and property2 to specify a second bean which provides the value
+	 */
+	public String getProperty2() {
+		return property2;
+	}
+
+	public void setProperty2(String property2) {
+		this.property2 = property2;
+	}
+
 	public void release() {
 		super.release();
 		value = null;
+		name2 = null;
+		property2 = null;
 	}
 
 	protected boolean condition(int desired1, int desired2) throws JspException {
 
+		// if value is not specified try to use name2 and property2
+		if(value == null) {
+			Object valueObject = TagUtils.lookup(pageContext, getScope(), name2, property2);
+			if(valueObject == null) {
+				throw new JspException("Value could not be set using name2 and property2 (bean not found or property returned null)");
+			}
+			value = valueObject + "";
+		}
+		
 		// Acquire the value and determine the test type
 		int type = -1;
 		double doubleValue = 0.0;
@@ -86,7 +128,7 @@ public abstract class CompareTagBase extends ConditionalTagBase {
 		if (variable == null) {
 			variable = ""; // Coerce null to a zero-length String
 		}
-
+		
 		// Perform the appropriate comparison
 		int result = 0;
 		if (type == DOUBLE_COMPARE) {
