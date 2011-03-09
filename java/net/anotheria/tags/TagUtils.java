@@ -12,6 +12,8 @@ import org.apache.log4j.Logger;
 
 public class TagUtils {
 
+	public static final String DEFAULT_BEAN_NAME = "box";
+	
 	private static Logger log = Logger.getLogger(TagUtils.class);
 	
 	private static enum Scope{
@@ -105,7 +107,7 @@ public class TagUtils {
 	public static Object lookup(PageContext pageContext, String scopeName, String aBeanName) throws JspException {
 		String beanName = aBeanName;
 		if(beanName == null) {
-			beanName = "box";
+			beanName = DEFAULT_BEAN_NAME;
 		}
 		
 		if (scopeName == null) {
