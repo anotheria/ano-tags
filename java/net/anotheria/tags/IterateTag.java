@@ -17,11 +17,19 @@ public class IterateTag extends BaseBodyTagSupport {
 	private static final long serialVersionUID = 1L;
 	protected String indexId = null;
 	protected String type = null;
+	protected int limit;
 
 	protected Iterator<?> iterator = null;
 	protected int lengthCount = 0;
 	protected boolean started = false;
 
+	public int getLimit() {
+		return limit;
+	}
+	public void setLimit(int limit) {
+		this.limit = limit;
+	}
+	
 	public int getIndex() {
 		return started ? lengthCount - 1 : 0;
 	}
@@ -98,6 +106,10 @@ public class IterateTag extends BaseBodyTagSupport {
 			TagUtils.writePrevious(pageContext, bodyContent.getString());
 			bodyContent.clearBody();
 		}
+		
+		// Decide whether to iterate or quit
+        if ((limit > 0) && (lengthCount >= limit))
+            return (SKIP_BODY);
 
 		if (iterator.hasNext()) {
 			Object element = iterator.next();
