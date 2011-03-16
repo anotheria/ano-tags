@@ -18,6 +18,7 @@ public class IterateTag extends BaseBodyTagSupport {
 	protected String indexId = null;
 	protected String type = null;
 	protected int limit;
+	protected String lastId = null;
 
 	protected Iterator<?> iterator = null;
 	protected int lengthCount = 0;
@@ -44,6 +45,12 @@ public class IterateTag extends BaseBodyTagSupport {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public String getLastId() {
+		return lastId;
+	}
+	public void setLastId(String last) {
+		this.lastId = last;
 	}
 
 	@SuppressWarnings({"unchecked", "deprecation"})
@@ -90,6 +97,9 @@ public class IterateTag extends BaseBodyTagSupport {
 			started = true;
 			if (indexId != null) {
 				pageContext.setAttribute(indexId, Integer.valueOf(getIndex()));
+			}
+			if (lastId != null) {
+				pageContext.setAttribute(lastId, !iterator.hasNext());
 			}
 			return (EVAL_BODY_TAG);
 		} else {
