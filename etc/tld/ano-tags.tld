@@ -112,6 +112,26 @@
 		</attribute>
 	</tag>
 	<tag>
+		<name>repeat</name>
+		<tagclass>net.anotheria.tags.RepeatTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>count</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>lastId</name>
+			<required>false</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+	<tag>
 		<name>equal</name>
 		<tagclass>net.anotheria.tags.EqualTag</tagclass>
 		<bodycontent>JSP</bodycontent>
