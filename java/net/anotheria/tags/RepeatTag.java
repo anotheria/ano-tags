@@ -1,9 +1,8 @@
 package net.anotheria.tags;
 
 import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.BodyTagSupport;
 
-public class RepeatTag extends BodyTagSupport {
+public class RepeatTag extends BaseBodyTagSupport {
 
 	private static final long serialVersionUID = 1L;
 	protected String id = null;
@@ -34,6 +33,13 @@ public class RepeatTag extends BodyTagSupport {
 	}
 	
 	public int doStartTag() throws JspException {
+		
+		if(count == 0){
+			Object countObj = lookup();
+			if(countObj instanceof Integer)
+				count = (Integer) countObj;
+		}
+		
 		if(count == 0)
 			return SKIP_BODY;
 		
