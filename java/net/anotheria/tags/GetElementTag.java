@@ -33,7 +33,9 @@ public class GetElementTag extends BaseTagSupport {
 	
 	@Override
 	public int doStartTag() throws JspException {
-
+		
+		System.out.println("*********MUMU");
+		
 		Object collectionObj = lookup();
 
 		if (collectionObj == null)
@@ -42,11 +44,11 @@ public class GetElementTag extends BaseTagSupport {
 		// Identify the number of elements, based on the collection type
 		Object element = null;
 		if (collectionObj.getClass().isArray()) {
-			element = Array.get(collectionObj, (Integer)index);
+			element = Array.get(collectionObj, index);
 		}
 
 		else if (collectionObj instanceof List) {
-			element = ((List<?>) collectionObj).get((Integer)index);
+			element = ((List<?>) collectionObj).get(index);
 		} else if (collectionObj instanceof Map) {
 			element = ((Map<?, ?>) collectionObj).get(index);
 		} else {
