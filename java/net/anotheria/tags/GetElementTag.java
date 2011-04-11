@@ -21,13 +21,13 @@ public class GetElementTag extends BaseTagSupport {
 	 *                collection not found or class is not supported
 	 */
 	
-	private Object index;
+	private int index;
 	
-	public Object getIndex() {
+	public int getIndex() {
 		return index;
 	}
 
-	public void setIndex(Object index) {
+	public void setIndex(int index) {
 		this.index = index;
 	}
 	
