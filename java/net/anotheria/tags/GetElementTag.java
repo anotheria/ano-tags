@@ -34,8 +34,6 @@ public class GetElementTag extends BaseTagSupport {
 	@Override
 	public int doStartTag() throws JspException {
 		
-		System.out.println("*********MUMU");
-		
 		Object collectionObj = lookup();
 
 		if (collectionObj == null)
