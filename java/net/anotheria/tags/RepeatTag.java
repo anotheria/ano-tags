@@ -77,13 +77,26 @@ public class RepeatTag extends BaseBodyTagSupport {
 
 	public int doEndTag() throws JspException {
 		started = false;
+		id = null;
+		lastId = null;
+		count = 0;
+		repeatsCount = 0;
+		started = false;
 		return EVAL_PAGE;
 	}
 
 	public void release() {
 		super.release();
+		id = null;
+		lastId = null;
+		count = 0;
 		repeatsCount = 0;
 		started = false;
+		
+	}
+	@Override
+	public String toString() {
+		return "RepeatTag [id=" + id + ", lastId=" + lastId + ", count=" + count + ", repeatsCount=" + repeatsCount + ", started=" + started + "]";
 	}
 
 }

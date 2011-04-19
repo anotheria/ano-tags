@@ -18,6 +18,7 @@ public class IterateTag extends BaseBodyTagSupport {
 	protected String indexId = null;
 	protected String type = null;
 	protected int limit;
+	protected int offset;
 	protected String lastId = null;
 
 	protected Iterator<?> iterator = null;
@@ -84,6 +85,9 @@ public class IterateTag extends BaseBodyTagSupport {
 		}
 
 		lengthCount = 0;
+		
+		for(int i = 0; i < offset && iterator.hasNext(); i++)
+			iterator.next();
 
 		// Store the first value and evaluate, or skip the body if none
 		if (iterator.hasNext()) {
@@ -150,6 +154,12 @@ public class IterateTag extends BaseBodyTagSupport {
 		iterator = null;
 		lengthCount = 0;
 		started = false;
+	}
+	public int getOffset() {
+		return offset;
+	}
+	public void setOffset(int offset) {
+		this.offset = offset;
 	}
 
 }
