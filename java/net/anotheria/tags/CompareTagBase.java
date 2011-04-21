@@ -62,6 +62,40 @@ public abstract class CompareTagBase extends ConditionalTagBase {
 		property2 = null;
 	}
 
+	protected Object evaluateVariable(String name, String property) throws JspException {
+		Object variable = null;
+		if (name != null) {
+			Object bean = pageContext.findAttribute(name);
+			if (property != null) {
+				if (bean == null) {
+					throw new JspException("No bean found under attribute key "	+ name);
+				}
+				try {
+					variable = PropertyUtils.getProperty(bean, property);
+				} catch (InvocationTargetException e) {
+					Throwable t = e.getCause();
+					if (t == null)
+						t = e;
+					throw new JspException("Exception accessing property "
+							+ property + " for bean " + name + ": "
+							+ t.toString());
+				} catch (Throwable t) {
+					throw new JspException("Exception accessing property "
+							+ property + " for bean " + name + ": "
+							+ t.toString());
+				}
+			} else {
+				variable = bean;
+			}
+		} else {
+			throw new JspException("Attribute 'name' was not specified");
+		}
+		if (variable == null) {
+			variable = ""; // Coerce null to a zero-length String
+		}
+		return variable;
+	}
+	
 	protected boolean condition(int desired1, int desired2) throws JspException {
 
 		// if value is not specified try to use name2 and property2
@@ -98,36 +132,7 @@ public abstract class CompareTagBase extends ConditionalTagBase {
 		String name = getName();
 		String property = getProperty();
 		
-		Object variable = null;
-		if (name != null) {
-			Object bean = pageContext.findAttribute(name);
-			if (property != null) {
-				if (bean == null) {
-					throw new JspException("No bean found under attribute key "	+ name);
-				}
-				try {
-					variable = PropertyUtils.getProperty(bean, property);
-				} catch (InvocationTargetException e) {
-					Throwable t = e.getCause();
-					if (t == null)
-						t = e;
-					throw new JspException("Exception accessing property "
-							+ property + " for bean " + name + ": "
-							+ t.toString());
-				} catch (Throwable t) {
-					throw new JspException("Exception accessing property "
-							+ property + " for bean " + name + ": "
-							+ t.toString());
-				}
-			} else {
-				variable = bean;
-			}
-		} else {
-			throw new JspException("Attribute 'name' was not specified");
-		}
-		if (variable == null) {
-			variable = ""; // Coerce null to a zero-length String
-		}
+		Object variable = evaluateVariable(name, property);
 		
 		// Perform the appropriate comparison
 		int result = 0;
