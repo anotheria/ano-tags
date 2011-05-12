@@ -13,7 +13,7 @@ public class NumberFormatTag extends BaseTagSupport{
 	private Double value;
 	private Integer integral;
 	private Integer fraction;
-	private String delimiter = ",";
+	private char delimiter = ',';
 	
 	public void setValue(Double value) {
 		this.value = value;
@@ -39,7 +39,7 @@ public class NumberFormatTag extends BaseTagSupport{
 	/**
 	 * @param delimiter the delimiter to set
 	 */
-	public void setDelimiter(String delimiter) {
+	public void setDelimiter(char delimiter) {
 		this.delimiter = delimiter;
 	}
 	
@@ -68,13 +68,5 @@ public class NumberFormatTag extends BaseTagSupport{
 	@Override
 	public String toString() {
 		return "NumberFormatTag [value=" + value + ", integral=" + integral + ", fraction=" + fraction + ", delimiter=" + delimiter + "]";
-	}
- 
-	public static void main(String[] args) {
-		NumberFormatTag tag = new NumberFormatTag();
-//		tag.setIntegral(3);
-		tag.setFraction(2);
-		tag.setDelimiter(",");
-		System.out.println(tag.format(10.0));
 	}
 }
