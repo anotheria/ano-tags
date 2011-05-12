@@ -39,8 +39,8 @@ public class NumberFormatTag extends BaseTagSupport{
 	/**
 	 * @param delimiter the delimiter to set
 	 */
-	public void setDelimiter(char delimiter) {
-		this.delimiter = delimiter;
+	public void setDelimiter(String delimiter) {
+		this.delimiter = delimiter.charAt(0);
 	}
 	
 	@Override public int doEndTag() throws JspException {
