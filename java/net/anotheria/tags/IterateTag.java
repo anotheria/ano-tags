@@ -10,10 +10,14 @@ import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 
+import org.apache.log4j.Logger;
+
 import net.anotheria.tags.util.EnumerationIterator;
 
 public class IterateTag extends BaseBodyTagSupport {
 
+	private static Logger log = Logger.getLogger(IterateTag.class);
+	
 	private static final long serialVersionUID = 1L;
 	protected String indexId = null;
 	protected String type = null;
@@ -58,7 +62,8 @@ public class IterateTag extends BaseBodyTagSupport {
 	public int doStartTag() throws JspException {
 		Object collection = lookup();
 		if (collection == null) {
-			throw new JspException("No collection found");
+			log.warn("No collection found! name=" + getName() + ", property=" + getProperty());
+			return (SKIP_BODY);
 		}
 
 		if (collection.getClass().isArray()) {
@@ -81,7 +86,8 @@ public class IterateTag extends BaseBodyTagSupport {
 		} else if (collection instanceof Enumeration) {
 			iterator = new EnumerationIterator((Enumeration) collection);
 		} else {
-			throw new JspException("Cannot create iterator for this collection");
+			log.warn("No collection found! name=" + getName() + ", property=" + getProperty());
+			return (SKIP_BODY);
 		}
 
 		lengthCount = 0;
