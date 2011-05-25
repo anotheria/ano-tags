@@ -80,7 +80,7 @@ public class BaseTagSupport extends TagSupport{
 	}
 	
 	public String toString(){
-		String ret = "name: " + name;;
+		String ret = "name: " + name;
 
 		if(!StringUtils.isEmpty(property))
 			ret += ", property: " + property;
