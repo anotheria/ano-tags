@@ -577,4 +577,11 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+
+    <tag>
+        <name>tslink</name>
+        <tagclass>net.anotheria.tags.TimestampedLinkTag</tagclass>
+        <bodycontent>JSP</bodycontent>
+    </tag>
+
 </taglib>

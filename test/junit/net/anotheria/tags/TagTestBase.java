@@ -24,7 +24,7 @@ public class TagTestBase {
 	    request.setVersion("HTTP/1.0");
 	  }
 	  
-	protected String testJSP(String jspFilename) throws IOException, Exception {
+	protected String testJSP(String jspFilename) throws Exception {
 		request.setURI("/test/jsp" + jspFilename);
 		response.parse(tester.getResponses(request.generate()));
 		assertEquals(null, response.getMethod());
