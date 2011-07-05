@@ -12,6 +12,11 @@ import javax.servlet.jsp.tagext.BodyContent;
  */
 public class TimestampedLinkTag extends BaseBodyTagSupport{
 
+	/**
+	 * Basic serial version UID.
+	 */
+	private static final long serialVersionUID = 2373693048955135316L;
+
 	public int doEndTag() throws JspException {
 		BodyContent bodyContent = getBodyContent();
 		if (bodyContent == null)

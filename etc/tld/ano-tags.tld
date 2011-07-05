@@ -577,6 +577,27 @@
 			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
+	<tag>
+		<name>iF</name>
+		<tagclass>net.anotheria.tags.IfTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>test</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>iFNot</name>
+		<tagclass>net.anotheria.tags.IfNotTag</tagclass>
+		<bodycontent>JSP</bodycontent>
+		<attribute>
+			<name>test</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+	</tag>
 
     <tag>
         <name>tslink</name>
