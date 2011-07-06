@@ -604,5 +604,32 @@
         <tagclass>net.anotheria.tags.TimestampedLinkTag</tagclass>
         <bodycontent>JSP</bodycontent>
     </tag>
+    
+    <tag>
+        <name>include</name>
+        <tagclass>net.anotheria.tags.IncludeTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+            <name>name</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>property</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>scope</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+        <attribute>
+            <name>page</name>
+            <required>false</required>
+            <rtexprvalue>true</rtexprvalue>
+        </attribute>
+    </tag>
+    
 
 </taglib>
