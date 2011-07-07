@@ -29,6 +29,17 @@ public class IncludeTag extends BaseTagSupport {
 	}
 
 	@Override
+	public int doStartTag() throws JspException {
+		try {
+			pageContext.getOut().flush();
+		} catch (IOException e) {
+			throw new JspException(e);
+		}
+		return EVAL_BODY_INCLUDE;
+	}
+
+	
+	@Override
 	public int doEndTag() throws JspException {
 		
 		if(page == null) {
@@ -36,6 +47,7 @@ public class IncludeTag extends BaseTagSupport {
 		}
 		ServletRequest request = pageContext.getRequest();
 		ServletResponse response = pageContext.getResponse();
+		
 		RequestDispatcher rd = request.getRequestDispatcher(page);
 		try {
 			rd.include(request, response);
@@ -46,7 +58,7 @@ public class IncludeTag extends BaseTagSupport {
 		}
 		
 		page = null;
-		return super.doEndTag();
+		return EVAL_PAGE;
 	}
 	
 
