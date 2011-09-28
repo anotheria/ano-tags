@@ -142,6 +142,9 @@ public class IterateTag extends BaseBodyTagSupport {
 			if (indexId != null) {
 				pageContext.setAttribute(indexId, Integer.valueOf(getIndex()));
 			}
+			if (lastId != null) {
+				pageContext.setAttribute(lastId, !iterator.hasNext());
+			}
 			return (EVAL_BODY_TAG);
 		} else {
 			return (SKIP_BODY);
