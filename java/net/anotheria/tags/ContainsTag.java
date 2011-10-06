@@ -1,19 +1,19 @@
 package net.anotheria.tags;
 
-import java.util.Collection;
 import javax.servlet.jsp.JspException;
+import java.util.Collection;
 
 public class ContainsTag extends CompareTagBase {
 
 	@Override
 	protected boolean condition() throws JspException {
 		// if value is not specified try to use name2 and property2
-		if(getValue() == null) {
-			Object valueObject = TagUtils.lookup(pageContext, getScope(), getName2(), getProperty2());
+		Object valueObject = getValue();
+		if(valueObject == null) {
+			valueObject = TagUtils.lookup(pageContext, getScope(), getName2(), getProperty2());
 			if(valueObject == null) {
 				throw new JspException("Value could not be set using name2 and property2 (bean not found or property returned null)");
 			}
-			setValue(valueObject + "");
 		}
 		Object variable = evaluateVariable(getName(), getProperty());
 		if (variable == null) {
@@ -23,7 +23,7 @@ public class ContainsTag extends CompareTagBase {
 			throw new JspException("'contains' tag must be provided with name/property that matches collection");
 		}
 		Collection c = (Collection) variable;
-		return c.contains(getValue());
+		return c.contains(valueObject);
 	}
 	
 }
