@@ -18,6 +18,7 @@ public class WriteTag extends BaseTagSupport{
 	private boolean ignore;
     private boolean filter;
     private boolean escape;
+    private boolean replaceLinebreaks;
     
     private static interface Translator {
     	String translate(Object src, String params);
@@ -129,10 +130,16 @@ public class WriteTag extends BaseTagSupport{
 		if(toWrite == null)
 			return SKIP_BODY; //Nothing to write
 		String message = ""+toWrite;
-		if(filter)
+		if(filter){
 			message = TagUtils.filter(message);
-		if(escape)
+		}
+		if(escape){
 			message = StringUtils.escape(message, '\'','"');
+		}
+		if (replaceLinebreaks){
+			message = StringUtils.removeChar(message, '\r');
+			message = StringUtils.replace(message, '\n', "<br>");
+		}
 		if (translator == null) {
 			if (dateFormat != null) {
 				try {
@@ -150,6 +157,12 @@ public class WriteTag extends BaseTagSupport{
 			
 		write(message);
 		return SKIP_BODY;
+	}
+	public boolean isReplaceLinebreaks() {
+		return replaceLinebreaks;
+	}
+	public void setReplaceLinebreaks(boolean replaceLinebreaks) {
+		this.replaceLinebreaks = replaceLinebreaks;
 	}
 	
 

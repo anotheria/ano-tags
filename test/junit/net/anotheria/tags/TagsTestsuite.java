@@ -15,7 +15,7 @@ import org.junit.runners.Suite.SuiteClasses;
 		NotEqualTagTest.class,
 		NotPresentTagTest.class,
 		ChooseTagTest.class,
-		OtherwiseTagTest.class} )
+		OtherwiseTagTest.class, WriteTagTest.class} )
 public class TagsTestsuite {
 
 

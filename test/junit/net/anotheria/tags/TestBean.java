@@ -70,6 +70,10 @@ public class TestBean {
 		return null;
 	}
 	
+	public String getLinebrokenValue(){
+		return "Hello\nWorld";
+	}
+	
 	@Override
 	public String toString() {
 		return "123";
