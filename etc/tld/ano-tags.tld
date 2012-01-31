@@ -639,7 +639,19 @@
         <tagclass>net.anotheria.tags.TimestampedLinkTag</tagclass>
         <bodycontent>JSP</bodycontent>
     </tag>
-    
-    
-
+    <tag>
+        <name>random</name>
+        <tagclass>net.anotheria.tags.RandomTag</tagclass>
+        <bodycontent>empty</bodycontent>
+        <attribute>
+			<name>id</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>length</name>
+			<required>false</required>
+			<rtexprvalue>true</rtexprvalue>
+		</attribute>
+    </tag>
 </taglib>
