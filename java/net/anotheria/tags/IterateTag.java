@@ -10,9 +10,10 @@ import java.util.Map;
 
 import javax.servlet.jsp.JspException;
 
-import org.apache.log4j.Logger;
-
 import net.anotheria.tags.util.EnumerationIterator;
+import net.anotheria.util.StringUtils;
+
+import org.apache.log4j.Logger;
 
 public class IterateTag extends BaseBodyTagSupport {
 
@@ -20,6 +21,7 @@ public class IterateTag extends BaseBodyTagSupport {
 	
 	private static final long serialVersionUID = 1L;
 	protected String indexId = null;
+	protected String enumeration = null;
 	protected String type = null;
 	protected int limit;
 	protected int offset;
@@ -56,6 +58,20 @@ public class IterateTag extends BaseBodyTagSupport {
 	}
 	public void setLastId(String last) {
 		this.lastId = last;
+	}
+	
+	@Override
+	protected Object lookup() throws JspException{
+		if(StringUtils.isEmpty(enumeration))
+			return super.lookup();
+		try {
+			Class<?> enumClass = Class.forName(enumeration);
+			if(!enumClass.isEnum())
+				throw new JspException("Not enum class: " + enumeration);
+			return enumClass.getEnumConstants();
+		} catch (ClassNotFoundException e) {
+			throw new JspException("Could not load Enum: " + enumeration);
+		}
 	}
 
 	@SuppressWarnings({"unchecked", "deprecation"})
@@ -169,6 +185,13 @@ public class IterateTag extends BaseBodyTagSupport {
 	}
 	public void setOffset(int offset) {
 		this.offset = offset;
+	}
+
+	public String getEnumeration() {
+		return enumeration;
+	}
+	public void setEnumeration(String enumeration) {
+		this.enumeration = enumeration;
 	}
 
 }
