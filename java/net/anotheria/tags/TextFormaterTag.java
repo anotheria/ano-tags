@@ -30,9 +30,9 @@ public class TextFormaterTag extends BaseBodyTagSupport{
 		":"
 	};
 	
-	private static HashMap mappings ;
+	private static HashMap<String,String> mappings ;
 	static{
-		mappings = new HashMap();
+		mappings = new HashMap<String,String>();
 		mappings.put(CONTROL_IDENTIFIER+"bs", "b");
 		mappings.put(CONTROL_IDENTIFIER+"be", "/b");
 		mappings.put(CONTROL_IDENTIFIER+"is", "i");
