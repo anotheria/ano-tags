@@ -1,20 +1,20 @@
 package net.anotheria.tags;
 
-import java.io.IOException;
+import org.apache.commons.beanutils.PropertyUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyContent;
-
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.log4j.Logger;
+import java.io.IOException;
 
 public class TagUtils {
 
 	public static final String DEFAULT_BEAN_NAME = "box";
 	
-	private static Logger log = Logger.getLogger(TagUtils.class);
+	private static Logger log = LoggerFactory.getLogger(TagUtils.class);
 	
 	private static enum Scope{
 		/**
@@ -75,11 +75,11 @@ public class TagUtils {
 			try {
 				return PropertyUtils.getProperty(property, subPropertyName);
 			} catch (Exception e) {
-				log.error(e,e);
+				log.error("lookup",e);
 				throw new JspException("Could not read " + beanName + "." + propertyName + "." + subPropertyName, e);
 			}
 		} catch (Exception e) {
-			log.error(e,e);
+			log.error("lookup",e);
 			throw new JspException("Could not read " + beanName + "." + propertyName, e);
 		}
 	}
@@ -99,7 +99,7 @@ public class TagUtils {
 			Object property = PropertyUtils.getProperty(bean, propertyName);
 			return property;
 		} catch (Exception e) {
-			log.error(e,e);
+			log.error("lookup",e);
 			throw new JspException("Could not read " + beanName + "." + propertyName, e);
 		} 
 	}

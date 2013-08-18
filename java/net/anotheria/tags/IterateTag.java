@@ -1,5 +1,11 @@
 package net.anotheria.tags;
 
+import net.anotheria.tags.util.EnumerationIterator;
+import net.anotheria.util.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.servlet.jsp.JspException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -8,16 +14,9 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
 
-import javax.servlet.jsp.JspException;
-
-import net.anotheria.tags.util.EnumerationIterator;
-import net.anotheria.util.StringUtils;
-
-import org.apache.log4j.Logger;
-
 public class IterateTag extends BaseBodyTagSupport {
 
-	private static Logger log = Logger.getLogger(IterateTag.class);
+	private static Logger log = LoggerFactory.getLogger(IterateTag.class);
 	
 	private static final long serialVersionUID = 1L;
 	protected String indexId = null;
