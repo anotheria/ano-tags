@@ -3,7 +3,7 @@ contentType="text/html;charset=utf-8"
 session="true"
 isELIgnored ="false"
 %>
-<%@ taglib uri="/etc/tld/ano-tags.tld" prefix="ano"%>
+<%@ taglib uri="/src/main/resources/tld/ano-tags.tld" prefix="ano"%>
 
 <%
 request.setAttribute("attributeTrue", true);

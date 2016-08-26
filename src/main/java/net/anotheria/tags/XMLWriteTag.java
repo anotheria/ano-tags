@@ -4,7 +4,6 @@ import net.anotheria.util.StringUtils;
 import net.anotheria.util.xml.XMLNode;
 
 import javax.servlet.jsp.JspException;
-import java.io.IOException;
 
 /**
  * XMLWriteTag - for writing net.anotheria.util.xml.XMLNode.
@@ -30,15 +29,13 @@ public class XMLWriteTag extends BaseTagSupport {
 	public int doEndTag() throws JspException {
 		if (StringUtils.isEmpty(name))
 			throw new JspException("Illegal node parameter!!!");
-		try {
-			Object obj = pageContext.findAttribute(name);
-			if (obj instanceof XMLNode)
-				((XMLNode) obj).write(pageContext.getOut(), 0);
-			else
-				throw new JspException("XMLNode " + name + " not founded in page context");
-		} catch (IOException e) {
-			throw new JspException("error while printing XML data", e);
-		}
+
+		Object obj = pageContext.findAttribute(name);
+		if (obj instanceof XMLNode)
+			((XMLNode) obj).write(pageContext.getOut(), 0);
+		else
+			throw new JspException("XMLNode " + name + " not founded in page context");
+
 		return SKIP_BODY;
 	}
 }

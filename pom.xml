@@ -15,7 +15,7 @@
   <build>
     <resources>
       <resource>
-        <directory>${project.basedir}/etc/tld</directory>
+        <directory>${project.basedir}/src/main/resources/tld</directory>
         <targetPath>META-INF</targetPath>
       </resource>
     </resources>
