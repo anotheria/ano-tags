@@ -1,42 +1,73 @@
 package net.anotheria.tags;
 
+import net.anotheria.util.StringUtils;
+
+import javax.servlet.jsp.JspException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import javax.servlet.jsp.JspException;
 
-import net.anotheria.util.StringUtils;
-
-
-
+/**
+ * WriteTag for printing out value of a variable.
+ */
 public class WriteTag extends BaseTagSupport{
-	
+
+	/**
+	 * SerialUID.
+	 */
 	private static final long serialVersionUID = 1L;
-	
+
+	/**
+	 * Bean name.
+	 */
 	private String name;
+	/**
+	 * Bean property.
+	 */
 	private String property;
+	/**
+	 * Ignore flag. If true a missing bean/property will be skipped.
+	 */
 	private boolean ignore;
+	/**
+	 * Filter. If true the content should be filtered by the TagUtils and replace special characters with their html encoded equivalents.
+	 */
     private boolean filter;
+	/**
+	 * If true the single and double quotes will be escaped with backslashes.
+	 */
     private boolean escape;
+	/**
+	 * If true replace textlinebreaks (\r\n) with &lt;br&gt; html tag.
+	 */
     private boolean replaceLinebreaks;
     
-    private static interface Translator {
+    private interface Translator {
     	String translate(Object src, String params);
     }
     
     private enum TranslationFormat implements Translator {
-    	LOWER_CASE {
+		/**
+		 * Moves everything to lowercase.
+		 */
+		LOWER_CASE {
     		@Override
     		public String translate(Object src, String params) {
     			return src.toString().toLowerCase().replace('_', ' ');
     		}
     	},
+		/**
+		 * Moves everything to uppercase..
+		 */
     	UPPER_CASE {
     		@Override
     		public String translate(Object src, String params) {
     			return src.toString().toUpperCase().replace('_', ' ');
     		}
     	},
+		/**
+		 * Handles the either as java.lang.Date object or as Long (timestamp).
+		 */
     	DATE {
     		@Override
     		public String translate(Object src, String params) {
@@ -59,12 +90,19 @@ public class WriteTag extends BaseTagSupport{
     			return new SimpleDateFormat(params).format(date);
     		}
     	};	
-    }    
-    
-    private String translator;
+    }
+
+	/**
+	 * Value translator.
+	 */
+	private String translator;
+	/**
+	 * Parameters for the translator.
+	 */
     private String translatorParams;
     
     /**
+	 * Allows to format a timestamp value as date.
      *{@link Deprecated} WriteTag must be simple. Formating is not the part of it. Most formatting must be done while preparing bean or by other tags.
      */
     @Deprecated 
