@@ -19,7 +19,7 @@ public class SizeTag extends BaseTagSupport {
 	/**
 	 * Writes size of a specified collection to page contest.
 	 * 
-	 * @exception if collection not found or class is not supported
+	 * @exception if collection not found or class is not supported.
 	 */
 	@Override
 	public int doStartTag() throws JspException {
