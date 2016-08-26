@@ -1,24 +1,25 @@
 package net.anotheria.tags;
 
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Map;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
-
+/**
+ * This tag stores size of a collection into a variable. This tag supports Collections, Maps and Arrays.
+ */
 public class SizeTag extends BaseTagSupport {
 
 	/**
-	 *	Serial Version ID 
+	 *	Serial Version ID.
 	 */
 	private static final long serialVersionUID = -808848857807480351L;
 
 	/**
 	 * Writes size of a specified collection to page contest.
 	 * 
-	 * @exception if
-	 *                collection not found or class is not supported
+	 * @exception if collection not found or class is not supported
 	 */
 	@Override
 	public int doStartTag() throws JspException {
