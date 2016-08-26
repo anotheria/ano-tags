@@ -14,21 +14,36 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.Map;
 
+/**
+ * IteratorTag.
+ */
 public class IterateTag extends BaseBodyTagSupport {
 
+	/**
+	 * Logger.
+	 */
 	private static Logger log = LoggerFactory.getLogger(IterateTag.class);
-	
-	private static final long serialVersionUID = 1L;
-	protected String indexId = null;
-	protected String enumeration = null;
-	protected String type = null;
-	protected int limit;
-	protected int offset;
-	protected String lastId = null;
 
-	protected Iterator<?> iterator = null;
-	protected int lengthCount = 0;
-	protected boolean started = false;
+	/**
+	 * SerialVersionUID.
+	 */
+	private static final long serialVersionUID = 1L;
+	/**
+	 * Id of the index variable.
+	 */
+	private String indexId = null;
+	private String enumeration = null;
+	private String type = null;
+	private int limit;
+	private int offset;
+	private String lastId = null;
+
+	/**
+	 * Iterator that iterates over the collection.
+	 */
+	private Iterator<?> iterator = null;
+	private int lengthCount = 0;
+	private boolean started = false;
 
 	public int getLimit() {
 		return limit;

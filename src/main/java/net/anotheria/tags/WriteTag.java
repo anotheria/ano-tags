@@ -31,6 +31,7 @@ public class WriteTag extends BaseTagSupport{
 	private boolean ignore;
 	/**
 	 * Filter. If true the content should be filtered by the TagUtils and replace special characters with their html encoded equivalents.
+	 * This serves as anti-xss measure because it prevents content from being interpreted as html.
 	 */
     private boolean filter;
 	/**

@@ -10,13 +10,22 @@ import javax.servlet.jsp.PageContext;
 import javax.servlet.jsp.tagext.BodyContent;
 import java.io.IOException;
 
+/**
+ * Utils for tags.
+ */
 public class TagUtils {
 
 	public static final String DEFAULT_BEAN_NAME = "box";
-	
+
+	/**
+	 * Logger.
+	 */
 	private static Logger log = LoggerFactory.getLogger(TagUtils.class);
-	
-	private static enum Scope{
+
+	/**
+	 * JSP Scopes.
+	 */
+	private enum Scope{
 		/**
 		 * page scope.
 		 */
