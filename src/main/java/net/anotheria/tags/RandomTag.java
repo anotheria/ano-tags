@@ -1,10 +1,10 @@
 package net.anotheria.tags;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
-
 import net.anotheria.util.IdCodeGenerator;
 import net.anotheria.util.StringUtils;
+
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 
 public class RandomTag extends BaseTagSupport {
 
@@ -18,8 +18,7 @@ public class RandomTag extends BaseTagSupport {
 	/**
 	 * Writes size of a specified collection to page contest.
 	 * 
-	 * @exception if
-	 *                collection not found or class is not supported
+	 * exception if collection not found or class is not supported
 	 */
 	@Override
 	public int doStartTag() throws JspException {

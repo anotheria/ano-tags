@@ -1,11 +1,10 @@
 package net.anotheria.tags;
 
+import javax.servlet.jsp.JspException;
+import javax.servlet.jsp.PageContext;
 import java.lang.reflect.Array;
 import java.util.List;
 import java.util.Map;
-
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
 
 public class GetElementTag extends BaseTagSupport {
 
@@ -17,8 +16,7 @@ public class GetElementTag extends BaseTagSupport {
 	/**
 	 * Writes size of a specified collection to page contest.
 	 * 
-	 * @exception if
-	 *                collection not found or class is not supported
+	 * exception if collection not found or class is not supported
 	 */
 	
 	private int index;
