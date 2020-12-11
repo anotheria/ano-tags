@@ -43,7 +43,7 @@ public class SizeTag extends BaseTagSupport {
 			throw new JspException("Unsupported collection class: " + collectionObj.getClass());
 		}
 
-		pageContext.setAttribute(getId(), new Integer(size), PageContext.PAGE_SCOPE);
+		pageContext.setAttribute(getId(), Integer.valueOf(size), PageContext.PAGE_SCOPE);
 		return (SKIP_BODY);
 
 	}
