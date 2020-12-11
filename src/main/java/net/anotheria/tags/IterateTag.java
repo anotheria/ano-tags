@@ -41,7 +41,7 @@ public class IterateTag extends BaseBodyTagSupport {
 	/**
 	 * Iterator that iterates over the collection.
 	 */
-	private Iterator<?> iterator = null;
+	private transient Iterator<?> iterator = null;
 	private int lengthCount = 0;
 	private boolean started = false;
 
