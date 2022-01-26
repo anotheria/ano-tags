@@ -45,9 +45,6 @@ public class DefineTag extends BaseBodyTagSupport {
             if (body != null) {
                 body = body.trim();
             }
-            if (body.length() < 1) {
-                body = null;
-            }
         }
         return (SKIP_BODY);
 
