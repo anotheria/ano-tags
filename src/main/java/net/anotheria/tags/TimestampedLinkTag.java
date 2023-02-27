@@ -2,8 +2,8 @@ package net.anotheria.tags;
 
 import net.anotheria.util.StringUtils;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.tagext.BodyContent;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.tagext.BodyContent;
 
 /**
  * Appends body of tag with parameter name "ts" and it's value of current time in milliseconds.

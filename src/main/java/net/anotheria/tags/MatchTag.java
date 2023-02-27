@@ -1,6 +1,6 @@
 package net.anotheria.tags;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * Tag that shows it's content if matching condition is true.

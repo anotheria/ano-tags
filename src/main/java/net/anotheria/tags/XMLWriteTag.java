@@ -3,7 +3,7 @@ package net.anotheria.tags;
 import net.anotheria.util.StringUtils;
 import net.anotheria.util.xml.XMLNode;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 /**
  * XMLWriteTag - for writing net.anotheria.util.xml.XMLNode.

@@ -1,7 +1,7 @@
 package net.anotheria.tags;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.PageContext;
 import java.lang.reflect.Array;
 import java.util.Collection;
 import java.util.Map;

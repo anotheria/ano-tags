@@ -2,7 +2,7 @@ package net.anotheria.tags;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 import net.anotheria.util.Date;
 
 public class DateFormatTag extends BaseTagSupport {

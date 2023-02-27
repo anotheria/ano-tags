@@ -2,7 +2,7 @@ package net.anotheria.tags;
 
 import net.anotheria.util.StringUtils;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

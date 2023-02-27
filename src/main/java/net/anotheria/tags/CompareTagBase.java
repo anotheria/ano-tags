@@ -2,7 +2,7 @@ package net.anotheria.tags;
 
 import java.lang.reflect.InvocationTargetException;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 
 import org.apache.commons.beanutils.PropertyUtils;
 

@@ -1,6 +1,6 @@
 package net.anotheria.tags;
 
-import javax.servlet.jsp.JspException;
+import jakarta.servlet.jsp.JspException;
 import java.util.Collection;
 
 public class ContainsTag extends CompareTagBase {

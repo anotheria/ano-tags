@@ -3,8 +3,8 @@ package net.anotheria.tags;
 import net.anotheria.util.IdCodeGenerator;
 import net.anotheria.util.StringUtils;
 
-import javax.servlet.jsp.JspException;
-import javax.servlet.jsp.PageContext;
+import jakarta.servlet.jsp.JspException;
+import jakarta.servlet.jsp.PageContext;
 
 public class RandomTag extends BaseTagSupport {
 
